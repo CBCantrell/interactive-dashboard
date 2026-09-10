@@ -1,4 +1,16 @@
-body {
+body
+{
     background-color: lightblue;
     font-family: Arial, sans-serif;
+}
+
+form 
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+label, input, button 
+{
+    margin: 5px;
 }
