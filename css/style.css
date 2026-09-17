@@ -14,3 +14,10 @@ label, input, button
 {
     margin: 5px;
 }
+
+#weekly-tasks,
+#metric-converter
+{
+    flex-basis: 100%;
+    margin-bottom: 20px;
+}
