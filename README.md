@@ -41,3 +41,7 @@ BEGIN
 
     OUTPUT result
 END
+
+## Magic Eight Ball
+
+The Magic Eight Ball allows a user to enter a yes/no question and click the Eight Ball image to receive a random answer. The game uses an array to store possible answers and an event listener to respond when the Eight Ball is clicked. If the question field is empty, an alert asks the user to enter a question. The reset button clears the question and hides the previous answer.
