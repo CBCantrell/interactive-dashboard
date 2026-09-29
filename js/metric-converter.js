@@ -21,49 +21,49 @@ convertButton.addEventListener("click", function(event)
     var fromUnit;
     var toUnit;
 
-    if (choice === "in to cm")
+    if (choice === "in-to-cm")
     {
         result = value * 2.54;
         fromUnit = "inches";
         toUnit = "centimeters";
     }
-    else if (choice === "ft to cm")
+    else if (choice === "ft-to-cm")
     {
         result = value * 30.48;
         fromUnit = "feet";
         toUnit = "centimeters";
     }
-    else if (choice === "yd to m")
+    else if (choice === "yd-to-m")
     {
         result = value * 0.91;
         fromUnit = "yards";
         toUnit = "meters";
     }
-    else if (choice === "mi to km")
+    else if (choice === "mi-to-km")
     {
         result = value * 1.61;
         fromUnit = "miles";
         toUnit = "kilometers";
     }
-    else if (choice === "cm to in")
+    else if (choice === "cm-to-in")
     {
         result = value * 0.39;
         fromUnit = "centimeters";
         toUnit = "inches";
     }
-    else if (choice === "cm to ft")
+    else if (choice === "cm-to-ft")
     {
         result = value * 0.0328;
         fromUnit = "centimeters";
         toUnit = "feet";
     }
-    else if (choice === "m to yd")
+    else if (choice === "m-to-yd")
     {
         result = value * 1.09;
         fromUnit = "meters";
         toUnit = "yards";
     }
-    else if (choice === "km to mi")
+    else if (choice === "km-to-mi")
     {
         result = value * 0.62;
         fromUnit = "kilometers";
