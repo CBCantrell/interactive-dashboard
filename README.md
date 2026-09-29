@@ -4,13 +4,17 @@ This project is a web-based dashboard built for WEB-115 to demonstrate interacti
 
 ## TODO: Future Enhancements
 - [x] Add a metric conversion tool.
-- [ ] Integrate a task list with array storage.
+- [x] Integrate a task list with array storage.
 - [ ] Add JavaScript logic for a live clock.
 - [x] Add a weekly task goal calculator.
 
 ## Weekly Task Goals
 
 The weekly task goal calculator multiplies the daily task goal by five workdays, then adds any weekly bonus tasks to calculate the total weekly goal.
+
+## Weekly Task List
+
+The Weekly Task List allows a user to enter tasks that are stored in a JavaScript array. JavaScript DOM manipulation dynamically creates the unordered list and each task list item rather than hard-coding them into the HTML. After a task is added, the input field is cleared so another task can be entered.
 
 ## Imperial/Metric Converter
 
