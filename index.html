@@ -21,7 +21,7 @@
             <div class="col" id="weekly-tasks">
                 <h2>Weekly Task Goals</h2>
                 <script src="js/task-manager.js" defer></script>
-                <form>
+                <form id="goal-form">
                     <label for="user-name">Name:</label>
                     <input type="text" id="user-name">
                     <label for="daily-goal">Daily Task Goal:</label>
@@ -31,6 +31,16 @@
                     <button id="goal-btn">Calculate Weekly Goal</button>
                 </form>
                 <p id="goal-message"></p>
+                
+                <div id="task-list">
+                    <h3>Weekly Task List</h3>
+                    <p>Enter a task below to manage your goals.</p>
+                    <form>
+                        <label for="task-name">Enter task:</label>
+                        <input type="text" id="task-name">
+                        <button id="add-task">Add Task</button>
+                    </form>
+                </div>
             </div>
             <div class="col" id="metric-converter">
                 <h2>Imperial/Metric Converter</h2>
