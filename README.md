@@ -7,6 +7,8 @@ This project is a web-based dashboard built for WEB-115 to demonstrate interacti
 - [x] Integrate a task list with array storage.
 - [ ] Add JavaScript logic for a live clock.
 - [x] Add a weekly task goal calculator.
+- [x] Add task priorities, importance indicators, and completion tracking.
+- [x] Add task editing and deletion functionality.
 
 ## Weekly Task Goals
 
@@ -14,7 +16,13 @@ The weekly task goal calculator multiplies the daily task goal by five workdays,
 
 ## Weekly Task List
 
-The Weekly Task List allows a user to enter tasks that are stored in a JavaScript array. JavaScript DOM manipulation dynamically creates the unordered list and each task list item rather than hard-coding them into the HTML. After a task is added, the input field is cleared so another task can be entered.
+The Weekly Task List allows users to add, edit, complete, and delete tasks using JavaScript. Tasks are stored in an array of objects containing a unique ID, task name, priority, importance status, and completion status.
+
+Users can assign High, Medium, or Low priority to each task and mark tasks as important. JavaScript applies different colors based on priority, highlights important tasks in red, and uses a strikethrough to identify completed tasks.
+
+The application uses JavaScript DOM manipulation to dynamically create task list items and buttons. Users can mark tasks complete or undo completion, edit task names, delete individual tasks, or clear the entire list.
+
+Whenever a task is added, modified, or deleted, the updated task array is logged to the browser console using `JSON.stringify()`.
 
 ## Imperial/Metric Converter
 
