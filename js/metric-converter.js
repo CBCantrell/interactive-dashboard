@@ -13,7 +13,7 @@ convertButton.addEventListener("click", function(event)
     value = parseFloat(value);
 
     // Get the conversion dropdown and determine which option was selected
-    var conversionSelect = document.getElementsByTagName("select")[0];
+    var conversionSelect = document.getElementById("conversion-type");
     var selectedOption = conversionSelect.selectedIndex;
     var choice = conversionSelect.options[selectedOption].value;
 

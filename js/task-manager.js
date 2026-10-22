@@ -1,12 +1,11 @@
-// Store the user's task list
+// Store the user's tasks as an array of objects
 let myTasks = [];
 
-// Create the unordered list that will display the user's tasks
-let taskList = document.createElement("ul");
-taskList.id = "user-tasks";
+// Reference the unordered list already created in the HTML
+let taskList = document.getElementById("user-tasks");
 
-// Add the unordered list to the task-list div
-document.getElementById("task-list").appendChild(taskList);
+// Keep track of unique task IDs
+let nextTaskId = 1;
 
 function weeklyGoal(userName, dailyGoal, bonusTasks) 
 {
@@ -44,27 +43,144 @@ document.getElementById("goal-btn").addEventListener("click", function(event)
     weeklyGoal(userName, dailyGoal, bonusTasks);
 });
 
-// Add a new task when the Add Task button is clicked
-document.getElementById("add-task").addEventListener("click", function(event)
+
+// Add a new task when the task form is submitted
+document.getElementById("task-form").addEventListener("submit", function(event)
 {
     // Prevent the form from submitting and refreshing the page
     event.preventDefault();
 
-    // Get the task entered by the user
-    let taskName = document.getElementById("task-name").value;
+    // Get the task information entered by the user
+    let taskName = document.getElementById("task-name").value.trim();
+    let taskPriority = document.getElementById("task-priority").value;
+    let taskImportant = document.getElementById("task-important").checked;
 
-    // Store the task in the task array
-    myTasks.push(taskName);
+    // Do not add an empty task
+    if (taskName === "") {
+        return;
+    }
 
-    // Create a list item for the new task
+    // Create a task object using object literal notation
+    let newTask = {
+        id: nextTaskId,
+        name: taskName,
+        priority: taskPriority,
+        isImportant: taskImportant,
+        isCompleted: false
+    };
+
+    // Add the task object to the array
+    myTasks.push(newTask);
+    nextTaskId++;
+
+    
+    // Create a list item for the task
     let listItem = document.createElement("li");
+    listItem.textContent = newTask.name + " (" + newTask.priority + ") ";
 
-    // Add the task text to the list item
-    listItem.textContent = taskName;
+    // Apply task styling based on importance and priority
+    if (newTask.isImportant) {
+        listItem.style.color = "red";
+    }
+    else if (newTask.priority === "High") {
+        listItem.style.color = "darkorange";
+    }
+    else if (newTask.priority === "Medium") {
+        listItem.style.color = "blue";
+    }
+    else {
+        listItem.style.color = "green";
+    }
 
-    // Add the list item to the dynamically created unordered list
-    taskList.appendChild(listItem);
+    // Create a button to mark the task complete
+    let completeButton = document.createElement("button");
+    completeButton.textContent = "Complete";
+    completeButton.type = "button";
 
-    // Clear the input field after the task is added
-    document.getElementById("task-name").value = "";
+    // Update the task object and appearance when clicked
+    completeButton.addEventListener("click", function() {
+        newTask.isCompleted = !newTask.isCompleted;
+
+        if (newTask.isCompleted) {
+            listItem.style.textDecoration = "line-through";
+            completeButton.textContent = "Undo";
+        }
+        else {
+            listItem.style.textDecoration = "none";
+            completeButton.textContent = "Complete";
+        }
+
+        // Log the updated task list
+        console.log(JSON.stringify(myTasks));
+    });
+
+
+    // Create a button to delete an individual task
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.type = "button";
+
+    // Remove the task from the array and webpage
+    deleteButton.addEventListener("click", function() {
+        myTasks = myTasks.filter(function(task) {
+            return task.id !== newTask.id;
+        });
+
+        listItem.remove();
+
+        // Log the updated task list
+        console.log(JSON.stringify(myTasks));
+    });
+
+
+    // Create a button to edit an individual task
+    let editButton = document.createElement("button");
+    editButton.textContent = "Edit";
+    editButton.type = "button";
+
+    // Allow the user to change the task name
+    editButton.addEventListener("click", function() {
+        let updatedName = prompt("Edit task name:", newTask.name);
+
+        // Update the task if the user enters a valid name
+        if (updatedName !== null && updatedName.trim() !== "") {
+            newTask.name = updatedName.trim();
+
+            // Update the task text without removing its buttons
+            listItem.firstChild.textContent =
+                newTask.name + " (" + newTask.priority + ") ";
+
+            // Log the updated task list
+            console.log(JSON.stringify(myTasks));
+        }
+    });
+
+
+    // Add the buttons and task to the webpage
+    listItem.appendChild(completeButton);
+    listItem.appendChild(editButton);
+    listItem.appendChild(deleteButton);
+    taskList.appendChild(listItem); 
+
+
+
+    // Log the updated task list as JSON
+    console.log(JSON.stringify(myTasks));
+
+    // Clear the form for the next task
+    document.getElementById("task-form").reset();
+});
+
+    
+// Delete all tasks when the Delete List button is clicked
+document.getElementById("delete-list").addEventListener("click", function()
+{
+    // Empty the array of task objects
+    myTasks = [];
+
+    // Remove all task list items from the webpage
+    taskList.replaceChildren();
+
+    // Log the updated empty task list
+    console.log(JSON.stringify(myTasks));
 });
