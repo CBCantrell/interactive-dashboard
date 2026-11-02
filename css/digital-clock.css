@@ -1,0 +1,19 @@
+/* Digital Clock and Date */
+#digital-clock
+{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#clock-face
+{
+    font-size: 2rem;
+    font-weight: bold;
+    color: darkblue;
+}
+
+#calendar-date
+{
+    font-size: 1.25rem;
+    color: #333333;
+}

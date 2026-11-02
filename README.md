@@ -2,10 +2,10 @@
 
 This project is a web-based dashboard built for WEB-115 to demonstrate interactive JavaScript features.
 
-## TODO: Future Enhancements
+## Completed Features
 - [x] Add a metric conversion tool.
 - [x] Integrate a task list with array storage.
-- [ ] Add JavaScript logic for a live clock.
+- [x] Add a real-time digital clock and current date display.
 - [x] Add a weekly task goal calculator.
 - [x] Add task priorities, importance indicators, and completion tracking.
 - [x] Add task editing and deletion functionality.
@@ -57,3 +57,15 @@ END
 ## Magic Eight Ball
 
 The Magic Eight Ball allows a user to enter a yes/no question and click the Eight Ball image to receive a random answer. The game uses an array to store possible answers and an event listener to respond when the Eight Ball is clicked. If the question field is empty, an alert asks the user to enter a question. The reset button clears the question and hides the previous answer.
+
+## Digital Clock and Date
+
+The Digital Clock displays the current local time and calendar date on the dashboard. The clock updates automatically every second without requiring the user to refresh the page.
+
+The application uses the JavaScript `Date` object with `getHours()`, `getMinutes()`, and `getSeconds()` to retrieve the current time. The `toLocaleDateString()` method retrieves and formats the current date.
+
+The clock automatically converts JavaScript's 24-hour time values into a 12-hour display with AM or PM. Users do not need to select a time format.
+
+The `updateClock()` function uses `innerHTML` to display the formatted time and date on the webpage. The `setInterval()` method calls the function every 1000 milliseconds to keep the clock updated. The function is also called when the page first loads so the time appears immediately.
+
+The clock uses a separate JavaScript file (`js/digital-clock.js`) and CSS stylesheet (`css/digital-clock.css`) to keep the code organized.

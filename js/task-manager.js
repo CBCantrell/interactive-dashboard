@@ -76,7 +76,13 @@ document.getElementById("task-form").addEventListener("submit", function(event)
     
     // Create a list item for the task
     let listItem = document.createElement("li");
-    listItem.textContent = newTask.name + " (" + newTask.priority + ") ";
+
+    // Create a text node for the task name and priority
+    let taskText = document.createTextNode(
+        newTask.name + " (" + newTask.priority + ") "
+    );
+
+    listItem.appendChild(taskText);
 
     // Apply task styling based on importance and priority
     if (newTask.isImportant) {
@@ -147,9 +153,9 @@ document.getElementById("task-form").addEventListener("submit", function(event)
             newTask.name = updatedName.trim();
 
             // Update the task text without removing its buttons
-            listItem.firstChild.textContent =
+            taskText.textContent =
                 newTask.name + " (" + newTask.priority + ") ";
-
+                
             // Log the updated task list
             console.log(JSON.stringify(myTasks));
         }
